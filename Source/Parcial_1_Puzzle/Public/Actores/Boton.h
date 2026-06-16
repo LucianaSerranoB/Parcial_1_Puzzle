@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "InteractInterface.h"
 #include "Boton.generated.h"
 
 class UStaticMeshComponent;
 
 UCLASS()
-class PARCIAL_1_PUZZLE_API ABoton : public AActor
+class PARCIAL_1_PUZZLE_API ABoton : public AActor, public IInteractInterface
 {
 	GENERATED_BODY()
 	
@@ -24,6 +25,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Puzzle")
 	bool bActivated;
+
+
+	virtual void Interact_Implementation(AActor* Interactor) override;
 
 
    UFUNCTION(BlueprintCallable)

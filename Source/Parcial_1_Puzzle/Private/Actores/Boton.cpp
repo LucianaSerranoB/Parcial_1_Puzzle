@@ -36,6 +36,14 @@ void ABoton::ActivationABoton()
 	}
 }
 
+
+
+void ABoton::Interact_Implementation(AActor* Interactor)
+{
+	ActivationABoton();
+}
+
+
 // Called when the game starts or when spawned
 void ABoton::BeginPlay()
 {

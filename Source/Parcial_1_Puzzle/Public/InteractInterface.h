@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
+#include "GameFramework/Actor.h"
 #include "InteractInterface.generated.h"
 
 // This class does not need to be modified.
@@ -18,8 +19,10 @@ class UInteractInterface : public UInterface
  */
 class PARCIAL_1_PUZZLE_API IInteractInterface
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
-	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+    void Interact(AActor* Interactor);
 };

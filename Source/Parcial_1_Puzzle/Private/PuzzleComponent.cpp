@@ -5,6 +5,7 @@
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
 #include "Camera/CameraComponent.h"
+#include "InteractInterface.h"
 #include "Engine/Engine.h"
 
 // Sets default values for this component's properties
@@ -81,6 +82,14 @@ void UPuzzleComponent::CheckInteraction()
 				FColor::Green,
 				ActorName
 			);
+
+			if (Hit.GetActor()->Implements<UInteractInterface>())
+			{
+				IInteractInterface::Execute_Interact(
+					Hit.GetActor(),
+					GetOwner()
+				);
+			}
 		}
 	}
 	else
@@ -96,8 +105,6 @@ void UPuzzleComponent::CheckInteraction()
 		}
 	}
 }
-
-
 // Called every frame
 void UPuzzleComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
